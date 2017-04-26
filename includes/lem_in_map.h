@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lem_in_map.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/04/26 11:52:19 by jjacobi          ###   ########.fr       */
+/*   Created: 2017/04/25 11:48:55 by jjacobi           #+#    #+#             */
+/*   Updated: 2017/04/26 09:51:36 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#ifndef LEM_IN_MAP_H
+# define LEM_IN_MAP_H
 
-int	main(void)
+typedef struct		s_coord
 {
-	t_info	data;
-	t_map	map;
+	int				x;
+	int				y;
+}					t_coord;
 
-	if (parse(&data, read_all()) == -1)
-		return (-1);
-	return (0);
-}
+typedef struct		s_map
+{
+	char			occuped;
+	int				score;
+	char			*name;
+	t_coord			pos;
+	struct s_map	*nextone;
+	struct s_map	*nexttwo;
+}					t_map;
+
+#endif

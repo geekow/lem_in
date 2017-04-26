@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_room.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/04/26 11:52:19 by jjacobi          ###   ########.fr       */
+/*   Created: 2017/04/26 11:31:14 by jjacobi           #+#    #+#             */
+/*   Updated: 2017/04/26 11:55:27 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	main(void)
+t_map	*get_room(char *str)
 {
-	t_info	data;
-	t_map	map;
+	char	**tmp;
+	t_map	*result;
 
-	if (parse(&data, read_all()) == -1)
-		return (-1);
-	return (0);
+	result = (t_map*)malloc(sizeof(t_map));
+	if (!result)
+		return (NULL);
+	result->occuped = 0;
+	result->score = 0;
+	tmp = ft_split_whitespaces(str);
+	if (!tmp || !tmp[0] || !tmp[1] || !tmp[2])
+		return (NULL);
+	result->name = tmp[0];
+	result->pos.x = ft_atoi(tmp[1]);
+	result->pos.y = ft_atoi(tmp[2]);
+	return (result);
 }

@@ -3,27 +3,27 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjacobi <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 13:04:48 by jjacobi           #+#    #+#              #
-#    Updated: 2017/04/21 20:42:35 by jjacobi          ###   ########.fr        #
+#    Updated: 2017/04/26 11:52:55 by jjacobi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= lem-in
 
-CC		= gcc
+CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
-SRC_FILES	= main.c
-OBJ		= $(SRC_FILES:.c=.o)
+SRC_FILES	= main.c get_ants_number.c get_start.c get_room.c parse.c read_all.c
+OBJ			= $(SRC_FILES:.c=.o)
 
 H_DIRS		= -I ./includes -I ./libft/includes
 SRC_FOLDER	= ./srcs
 LIBFT_PATH	= ./libft
 
 GREEN		= \033[32m
-RED		= \033[31m
+RED			= \033[31m
 DEFAULT		= \033[37m
 
 ifeq ($(shell uname),Darwin)

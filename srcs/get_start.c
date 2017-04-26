@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_start.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/04/26 11:52:19 by jjacobi          ###   ########.fr       */
+/*   Created: 2017/04/26 10:13:19 by jjacobi           #+#    #+#             */
+/*   Updated: 2017/04/26 11:56:18 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	main(void)
+int	get_start(t_info *data, char **readed)
 {
-	t_info	data;
-	t_map	map;
+	int	i;
 
-	if (parse(&data, read_all()) == -1)
-		return (-1);
-	return (0);
+	i = 0;
+	while(readed[i] != NULL)
+	{
+		if (ft_strcmp(readed[i], "##start") == 0)
+		{
+			data->map = get_room(readed[++i]);
+			data->startname = data->map->name;
+			return (0);
+		}
+		i++;
+	}
+	return (-1);
 }
