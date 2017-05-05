@@ -6,14 +6,14 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 12:11:25 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/04/26 11:02:23 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/05 10:14:00 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "lem_in.h"
 
-int	get_ants_number(t_info *data, char **readed)
+int	get_ants_number(t_lem_info *data, char **readed)
 {
 	int	i;
 	int	result;
@@ -26,10 +26,14 @@ int	get_ants_number(t_info *data, char **readed)
 			result = ft_atoi(readed[i - 1]);
 			if (ft_strlen(readed[i - 1]) == ft_strlen(ft_itoa(result)))
 			{
+				ft_putendl(readed[i - 1]);
 				data->ants = result;
-				return (result);
+				return (i);
 			}
+			else
+				return (-1);
 		}
+		ft_putendl(readed[i - 1]);
 	}
 	return (-1);
 }

@@ -6,18 +6,22 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/04/26 11:52:19 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/04 11:42:08 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
+int	error(void)
+{
+	return (-1);
+}
+
 int	main(void)
 {
-	t_info	data;
-	t_map	map;
+	t_lem_info	data;
 
-	if (parse(&data, read_all()) == -1)
-		return (-1);
+	if (parsing(&data, read_all()) == -1)
+		return (error());
 	return (0);
 }

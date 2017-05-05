@@ -6,7 +6,7 @@
 #    By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 13:04:48 by jjacobi           #+#    #+#              #
-#    Updated: 2017/04/26 11:52:55 by jjacobi          ###   ########.fr        #
+#    Updated: 2017/05/04 10:58:06 by jjacobi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME		= lem-in
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
-SRC_FILES	= main.c get_ants_number.c get_start.c get_room.c parse.c read_all.c
+SRC_FILES	= main.c get_ants_number.c parse.c read_all.c analyse_line.c \
+				reg_piece.c reg_connection.c
 OBJ			= $(SRC_FILES:.c=.o)
 
 H_DIRS		= -I ./includes -I ./libft/includes

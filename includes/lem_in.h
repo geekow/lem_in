@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:48:52 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/04/26 11:54:44 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/04 11:38:25 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@
 # include "lem_in_map.h"
 # include "libft.h"
 
-typedef struct	s_info
+typedef struct	s_lem_info
 {
 	int			ants;
-	t_map		*map;
+	t_lem_map	*map;
 	char		*startname;
 	char		*endname;
-}				t_info;
+}				t_lem_info;
 
 char			**read_all();
-int				parse(t_info *data, char **readed);
-t_map			*get_room(char *str);
-int				get_ants_number(t_info *data, char **readed);
-int				get_start(t_info *data, char **readed);
+int				parsing(t_lem_info *data, char **readed);
+int				get_ants_number(t_lem_info *data, char **readed);
+int				analyse_line(char *prop, char *line);
+int				reg_piece(char *name, char *line, char *prop);
+int				reg_connection(char *name, char *line);
 
 #endif

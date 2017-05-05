@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 10:21:25 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/04/26 11:58:27 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/05 10:05:03 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,21 @@ char	**append(char **table, char *toadd)
 	i = 0;
 	while (table && table[i] != NULL)
 		i++;
-	result = (char**)malloc(sizeof(char*) * (i + 1));
-	i = -1;
-	while (table && table[++i] != NULL)
+	result = (char**)malloc(sizeof(char*) * (i + 3));
+	i = 0;
+	while (table && table[i] != NULL)
+	{
 		result[i] = table[i];
-	if (table)
+		i++;
+	}
+	if (table && *table)
 		free(table);
 	result[i] = toadd;
 	result[i + 1] = NULL;
-	table = result;
-	return (table);
+	return (result);
 }
 
-char	**read_all()
+char	**read_all(void)
 {
 	int		i;
 	char	*str;
@@ -42,8 +44,12 @@ char	**read_all()
 	result = NULL;
 	while (i == 1)
 	{
-		i = get_next_line(STDIN_FILENO, &str);
-		result = append(result, str);
+		i = get_next_line(0, &str);
+		if (result)
+			result = append(result, str);
+		else
+			result = append(NULL, str);
 	}
+	i = 0;
 	return (result);
 }
