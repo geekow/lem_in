@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 10:21:25 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/05 10:05:03 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/05 14:19:47 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,14 @@ char	**append(char **table, char *toadd)
 
 char	**read_all(void)
 {
-	int		i;
 	char	*str;
 	char	**result;
 
-	i = 1;
 	result = NULL;
-	while (i == 1)
-	{
-		i = get_next_line(0, &str);
+	while (get_next_line(0, &str) == 1)
 		if (result)
 			result = append(result, str);
 		else
 			result = append(NULL, str);
-	}
-	i = 0;
 	return (result);
 }

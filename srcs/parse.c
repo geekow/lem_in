@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 10:44:57 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/05 10:40:43 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/05 14:59:34 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char*	regProp(char *param) {
 	static char*	prop = NULL;
 	char			*tmp;
 
-	if (param == NULL)
+	if (param == NULL && prop)
 	{
 		tmp = ft_strdup(prop);
 		prop = NULL;
@@ -25,7 +25,8 @@ char*	regProp(char *param) {
 	}
 	else
 	{
-		prop = ft_strdup(param);
+		if (param)
+			prop = ft_strdup(param);
 		return (NULL);
 	}
 }
@@ -55,10 +56,7 @@ int	parsing(t_lem_info *data, char **readed)
 		return (-1);
 	while (readed[i])
 		if (treat_line(readed[i++]) == -1)
-		{
-			ft_printf("Fatal error on line : %i\n", i - 1);
-			return (-1);
-		}
+			break;
 	ft_printf("Treat_line function is over.\n");
 		/**
 		**	Build data structure with informations
