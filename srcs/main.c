@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/04 11:42:08 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/09 10:28:48 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	main(void)
 	t_lem_info	data;
 
 	if (parsing(&data, read_all()) == -1)
-		return (error());
+	// 	return (error());
 	return (0);
 }

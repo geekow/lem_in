@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:17:22 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/05 12:03:27 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/09 11:47:53 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,20 @@ int	analyse_line(char *prop, char *line)
 	name = ft_strdup(line);
 	name[i] = '\0';
 	if (line[i] == ' ' && step == 0)
-		return (-1 == reg_piece(name, line + i + 1, prop) ? -1 :
-													ft_printf("%s\n", line));
+	{
+		if (-1 == reg_piece(name, line + i + 1, prop))
+			return (-1);
+	}
 	else if (line[i] == '-' && (step = 1))
-		return (-1 == reg_connection(name, line + i + 1) ? -1 :
-													ft_printf("%s\n", line));
+	{
+		if (-1 == reg_connection(name, line + i + 1))
+			return (-1);
+	}
 	else
 		return (-1);
+	ft_printf("%s\n", line);
+	if (prop)
+		free(prop);
+	free(name);
+	return (1);
 }

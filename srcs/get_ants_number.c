@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 12:11:25 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/05 10:14:00 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/09 10:37:52 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 int	get_ants_number(t_lem_info *data, char **readed)
 {
-	int	i;
-	int	result;
+	int		i;
+	int		result;
+	char	*tmp;
 
 	i = 0;
 	while (readed[i] != NULL)
@@ -24,14 +25,16 @@ int	get_ants_number(t_lem_info *data, char **readed)
 		if (readed[i++][0] != '#')
 		{
 			result = ft_atoi(readed[i - 1]);
-			if (ft_strlen(readed[i - 1]) == ft_strlen(ft_itoa(result)))
+			tmp = ft_itoa(result);
+			if (ft_strlen(readed[i - 1]) == ft_strlen(tmp))
 			{
 				ft_putendl(readed[i - 1]);
 				data->ants = result;
+				free(tmp);
 				return (i);
 			}
-			else
-				return (-1);
+			free(tmp);
+			return (-1);
 		}
 		ft_putendl(readed[i - 1]);
 	}

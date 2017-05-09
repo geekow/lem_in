@@ -6,20 +6,22 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 10:44:57 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/05 14:59:34 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/09 12:19:19 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include "ft_printf.h"
 
-char*	regProp(char *param) {
+char*	regProp(char *param)
+{
 	static char*	prop = NULL;
 	char			*tmp;
 
 	if (param == NULL && prop)
 	{
 		tmp = ft_strdup(prop);
+		free(prop);
 		prop = NULL;
 		return (tmp);
 	}
@@ -30,7 +32,6 @@ char*	regProp(char *param) {
 		return (NULL);
 	}
 }
-
 
 int	treat_line(char	*buff)
 {
@@ -47,21 +48,39 @@ int	treat_line(char	*buff)
 		return (-1);
 }
 
+int	free_readed(char **readed)
+{
+	int	i;
+
+	i = 0;
+	while (readed && readed[i])
+		free(readed[i++]);
+	free(readed);
+	return (0);
+}
 
 int	parsing(t_lem_info *data, char **readed)
 {
 	int	i;
-
+	//
 	if ((i = get_ants_number(data, readed)) == -1)
 		return (-1);
 	while (readed[i])
 		if (treat_line(readed[i++]) == -1)
 			break;
-	ft_printf("Treat_line function is over.\n");
-		/**
-		**	Build data structure with informations
-		**/
-	// if (get_start(data, readed) == -1)
-	// 	return (-1);
-	return (0);
+	/**
+	**	Build data structure with informations
+	**/
+	// PART TO DELETE
+	t_list				*result;
+	t_lem_connection	*tmp;
+
+	result = getset_connection(NULL);
+	while (result)
+	{
+		tmp = (t_lem_connection*)result->content;
+		ft_printf("-  Connection 1: %s\nConnection 2: %s\n", tmp->one, tmp->two);
+		result = result->next;
+	}
+	return (free_readed(readed));
 }

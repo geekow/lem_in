@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_whitespaces.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjacobi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 18:36:46 by jjacobi           #+#    #+#             */
-/*   Updated: 2016/11/19 16:57:34 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/09 10:43:07 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char		*str_to_put(char const *s, size_t *i)
 	k = j;
 	while (s[*i] != '\0' && !(s[*i] == 32 || (9 <= s[*i] && s[*i] <= 13)))
 		*i += 1;
-	if ((result = (char*)malloc(sizeof(*result) * (*i - j))) == NULL)
+	if ((result = (char*)malloc(sizeof(*result) * (*i - j + 1))) == NULL)
 		return (NULL);
 	while (j < *i)
 	{

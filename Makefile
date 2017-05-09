@@ -6,7 +6,7 @@
 #    By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 13:04:48 by jjacobi           #+#    #+#              #
-#    Updated: 2017/05/04 10:58:06 by jjacobi          ###   ########.fr        #
+#    Updated: 2017/05/09 12:25:24 by jjacobi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,12 @@ $(NAME): $(OBJ)
 	@$(ECHO) "\r$(GREEN) The .o from $(NAME) are compiled.            \
 		$(DEFAULT)"
 	@($(MAKE) -C $(LIBFT_PATH))
-	@$(CC) $(FLAGS) -o $@ $^ $(LIBFT_PATH)/libft.a $(H_DIRS)
+	@$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_PATH)/libft.a $(H_DIRS)
 	@$(ECHO) "$(GREEN)$(NAME)$(DEFAULT) created."
 
 %.o: $(SRC_FOLDER)/%.c
 	@$(ECHO) "\r$(GREEN) Compiling $@                      \c\033[K"
-	@$(CC) $(FLAGS) -c -o $@ $< $(H_DIRS)
+	@$(CC) $(CFLAGS) -c -o $@ $< $(H_DIRS)
 
 
 clean:

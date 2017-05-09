@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjacobi <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 11:02:51 by jjacobi           #+#    #+#              #
-#    Updated: 2017/04/21 20:40:23 by jjacobi          ###   ########.fr        #
+#    Updated: 2017/05/09 12:25:13 by jjacobi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ $(NAME): $(LIBFT_OBJS) $(PRINTF_OBJS)
 	@ar -s $@
 	@$(ECHO) "\n$(GREEN)$(NAME)$(DEFAULT) created."
 
-%.o: 
+%.o:
 	@$(ECHO) "\r$(GREEN) Compiling $@                      \c\033[K"
 	@$(CC) $(CFLAGS) -c -o $@ $(@:.o=.c) -I $(H_DIR)
 

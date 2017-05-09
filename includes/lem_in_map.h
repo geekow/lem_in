@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:48:55 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/04 10:39:56 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/05 21:49:05 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ typedef struct			s_lem_connection
 
 typedef struct			s_lem_map
 {
-	char				occuped;
-	int					score;
 	char				*name;
+	char				occuped;
 	t_lem_coord			pos;
 	struct s_lem_map	**next;
 }						t_lem_map;
