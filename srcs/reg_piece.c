@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:20:11 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/23 20:51:47 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/23 22:19:42 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_lem_map	*getset_endmap(t_lem_map *param)
 		return (map);
 }
 
-t_list	*getset_map(t_list *param)
+t_list		*getset_map(t_list *param)
 {
 	static t_list	*list;
 
@@ -95,7 +95,6 @@ int			reg_piece(char *name, char *line, char *prop)
 	{
 		if (!(map = get_room(name, line)))
 			return (-1);
-			// CODE STORE PIECE LIST FUNCTION
 		if (store_piece_list(map) == -1)
 			return (-1);
 	}

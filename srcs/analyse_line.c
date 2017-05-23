@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:17:22 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/23 20:16:42 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/23 22:35:17 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ int		analyse_line(char *prop, char *line)
 	ft_printf("%s\n", line);
 	if (prop)
 		free(prop);
-	free(name);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:24:40 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/23 20:18:19 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/23 22:40:07 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_list	*save_connection(char *name, char *line)
 		return (NULL);
 	if ((cont = (t_lem_connection*)malloc(sizeof(t_lem_connection))) == NULL)
 		return (NULL);
-	cont->one = ft_strdup(name);
+	cont->one = name;
 	cont->two = ft_strdup(line);
 	result->content = (void*)cont;
 	result->next = NULL;
