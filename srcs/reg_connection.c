@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:24:40 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/09 12:24:31 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/23 20:18:19 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ t_list	*save_connection(char *name, char *line)
 	cont->one = ft_strdup(name);
 	cont->two = ft_strdup(line);
 	result->content = (void*)cont;
+	result->next = NULL;
 	return (result);
 }
 
-int	reg_connection(char *name, char *line)
+int		reg_connection(char *name, char *line)
 {
 	t_list			*connections;
 	t_list			*tmp;
@@ -48,7 +49,7 @@ int	reg_connection(char *name, char *line)
 	tmp = connections;
 	if (!connections)
 	{
-	 	if (!(connections = save_connection(name, line)))
+		if (!(connections = save_connection(name, line)))
 			return (-1);
 		getset_connection(connections);
 	}

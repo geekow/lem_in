@@ -6,14 +6,14 @@
 #    By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 13:04:48 by jjacobi           #+#    #+#              #
-#    Updated: 2017/05/09 12:25:24 by jjacobi          ###   ########.fr        #
+#    Updated: 2017/05/23 19:52:25 by jjacobi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= lem-in
 
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 
 SRC_FILES	= main.c get_ants_number.c parse.c read_all.c analyse_line.c \
 				reg_piece.c reg_connection.c
