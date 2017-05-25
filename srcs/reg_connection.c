@@ -6,16 +6,18 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:24:40 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/25 21:27:16 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/26 00:00:18 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_list	*getset_connection(t_list *all)
+t_list	*getset_connection(t_list *all, char reset)
 {
 	static t_list	*connections = NULL;
 
+	if (reset)
+		connections = NULL;
 	if (all == NULL)
 		return (connections);
 	else
@@ -45,13 +47,13 @@ int		reg_connection(char *name, char *line)
 	t_list			*connections;
 	t_list			*tmp;
 
-	connections = getset_connection(NULL);
+	connections = getset_connection(NULL, 0);
 	tmp = connections;
 	if (!connections)
 	{
 		if (!(connections = save_connection(name, line)))
 			return (-1);
-		getset_connection(connections);
+		getset_connection(connections, 0);
 	}
 	else
 	{
@@ -72,7 +74,12 @@ t_list	*remove_connection(t_list *previous, t_list *list,
 	if (previous)
 		previous->next = list->next;
 	else
-		getset_connection(list->next);
+	{
+		if (list->next)
+			getset_connection(list->next, 0);
+		else
+			getset_connection(NULL, 1);
+	}
 	tmp = list;
 	list = list->next;
 	free(tmp);

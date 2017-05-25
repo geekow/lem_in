@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:48:52 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/25 21:27:04 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/25 23:26:13 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				store_piece_list(t_lem_map *store_piece_list);
 int				structure_data(t_lem_map *map);
 t_list			*remove_connection(t_list *previous, t_list *list,
 								t_lem_connection *connec);
-t_list			*getset_connection(t_list *all);
+t_list			*getset_connection(t_list *all, char reset);
 t_list			*getset_map(t_list *param);
 t_lem_map		*getset_startmap(t_lem_map *param);
 t_lem_map		*getset_endmap(t_lem_map *param);

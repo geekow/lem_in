@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:58:43 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/25 21:27:48 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/26 00:23:44 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_lem_map	**alloc_next_ptrs(t_lem_map *map)
 	int					i;
 
 	i = 0;
-	list = getset_connection(NULL);
+	list = getset_connection(NULL, 0);
 	while (list)
 	{
 		connec = (t_lem_connection*)list->content;
@@ -87,9 +87,7 @@ void		get_next_ptrs(t_lem_map *map, t_list *list)
 			map->next[i++] = get_map_add_with_name(connec->one);
 		if (ft_strcmp(connec->one, map->name) == 0 ||
 			ft_strcmp(connec->two, map->name) == 0)
-		{
 			list = remove_connection(previous, list, connec);
-		}
 		else
 		{
 			previous = list;
@@ -103,15 +101,12 @@ int			structure_data(t_lem_map *map)
 	int i;
 
 	i = 0;
-	if (map == getset_endmap(NULL))
-		return (0);
 	map->next = alloc_next_ptrs(map);
-	get_next_ptrs(map, getset_connection(NULL));
+	get_next_ptrs(map, getset_connection(NULL, 0));
 	while (map->next[i] != NULL)
 	{
-		if (structure_data(map->next[i]) == -1)
+		if (structure_data(map->next[i++]) == -1)
 			return (-1);
-		i++;
 	}
 	return (0);
 }
