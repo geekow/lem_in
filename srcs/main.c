@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/23 23:01:07 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/25 20:15:26 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 	t_lem_info	data;
 
 	parsing(&data, read_all());
-	if (structure_data() == -1)
+	if (structure_data(getset_startmap(NULL)) == -1)
 		return (error());
 	return (0);
 }
