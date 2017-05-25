@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:58:43 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/25 20:46:24 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/25 21:27:48 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,13 @@ t_lem_map	*get_map_add_with_name(char *name)
 	return (NULL);
 }
 
-int			get_next_ptrs(t_lem_map *map)
+void		get_next_ptrs(t_lem_map *map, t_list *list)
 {
 	int					i;
-	t_list				*list;
 	t_list				*previous;
 	t_lem_connection	*connec;
-	t_list				*tmp;
 
 	i = 0;
-	map->next = alloc_next_ptrs(map);
-	list = getset_connection(NULL);
 	previous = NULL;
 	while (list)
 	{
@@ -92,16 +88,7 @@ int			get_next_ptrs(t_lem_map *map)
 		if (ft_strcmp(connec->one, map->name) == 0 ||
 			ft_strcmp(connec->two, map->name) == 0)
 		{
-			if (previous)
-				previous->next = list->next;
-			else
-				getset_connection(list->next);
-			tmp = list;
-			list = list->next;
-			free(tmp);
-			free(connec->one);
-			free(connec->two);
-			free(connec);
+			list = remove_connection(previous, list, connec);
 		}
 		else
 		{
@@ -109,7 +96,6 @@ int			get_next_ptrs(t_lem_map *map)
 			list = list->next;
 		}
 	}
-	return (0);
 }
 
 int			structure_data(t_lem_map *map)
@@ -119,7 +105,8 @@ int			structure_data(t_lem_map *map)
 	i = 0;
 	if (map == getset_endmap(NULL))
 		return (0);
-	get_next_ptrs(map);
+	map->next = alloc_next_ptrs(map);
+	get_next_ptrs(map, getset_connection(NULL));
 	while (map->next[i] != NULL)
 	{
 		if (structure_data(map->next[i]) == -1)

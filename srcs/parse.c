@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 10:44:57 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/23 22:44:41 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/25 21:01:29 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,33 +70,3 @@ int		parsing(t_lem_info *data, char **readed)
 			break ;
 	return (free_readed(readed));
 }
-
-/**
-// DEBUG START
-t_list				*result;
-t_lem_connection	*tmp;
-t_lem_map			*temp;
-
-result = getset_connection(NULL);
-while (result)
-{
-	tmp = (t_lem_connection*)result->content;
-	ft_printf("-  Con 1: %s\nCon 2: %s\n", tmp->one, tmp->two);
-	result = result->next;
-}
-temp = getset_startmap(NULL);
-if (temp)
-	ft_printf("---\nStart map:\nName: %s\nPos x: %i\nPos y: %i\n", temp->name, temp->pos.x, temp->pos.y);
-result = getset_map(NULL);
-while (result)
-{
-	temp = result->content;
-	if (temp)
-		ft_printf("---\nmap:\nName: %s\nPos x: %i\nPos y: %i\n", temp->name, temp->pos.x, temp->pos.y);
-	result = result->next;
-}
-temp = getset_endmap(NULL);
-if (temp)
-	ft_printf("---\nEnd map:\nName: %s\nPos x: %i\nPos y: %i\n", temp->name, temp->pos.x, temp->pos.y);
-// DEBUG END
-**/
