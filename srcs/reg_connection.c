@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:24:40 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/26 00:00:18 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/28 20:05:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,12 @@ int		reg_connection(char *name, char *line)
 	return (0);
 }
 
-t_list	*remove_connection(t_list *previous, t_list *list,
-								t_lem_connection *connec)
+t_list	*remove_connection(t_list *previous, t_list *list)
 {
-	t_list	*tmp;
+	t_list				*tmp;
+	t_lem_connection	*connec;
 
+	connec = (t_lem_connection*)list->content;
 	if (previous)
 		previous->next = list->next;
 	else

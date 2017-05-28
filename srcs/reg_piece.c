@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:20:11 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/23 22:19:42 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/05/28 18:23:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ t_lem_map	*get_room(char *name, char *str)
 	result = (t_lem_map*)malloc(sizeof(t_lem_map));
 	if (!result)
 		return (NULL);
-	result->occuped = 0;
 	tmp = ft_split_whitespaces(str);
 	if (!tmp || !tmp[0] || !tmp[1])
 		return (NULL);
 	result->name = name;
 	result->pos.x = ft_atoi(tmp[0]);
 	result->pos.y = ft_atoi(tmp[1]);
+	result->next = NULL;
 	i = 0;
 	while (tmp[i])
 		free(tmp[i++]);
