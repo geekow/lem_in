@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:58:43 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/28 21:24:49 by user             ###   ########.fr       */
+/*   Updated: 2017/05/28 21:40:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ t_list		*get_next_ptrs(t_lem_map *map, t_list *list)
 			map->next[i++] = get_map_add_with_name(connec->one);
 		if (ft_strcmp(connec->one, map->name) == 0 ||
 			ft_strcmp(connec->two, map->name) == 0)
-			result = remove_conn_save_next(&list, previous, result, map->next[i - 1]);
+			result = remove_conn_save_next(&list, previous, result,
+											map->next[i - 1]);
 		else
 		{
 			previous = list;
@@ -122,7 +123,7 @@ int			structure_data(t_lem_map *map)
 				else
 					ft_lstpushback(next, get_next_ptrs(tmp, CONNECTIONS));
 			}
-			current = current->next;
+			advance_and_clear(&current);
 		}
 		current = next;
 		next = NULL;
