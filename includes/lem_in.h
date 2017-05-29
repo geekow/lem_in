@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:48:52 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/28 21:38:57 by user             ###   ########.fr       */
+/*   Updated: 2017/05/29 12:18:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct	s_lem_info
 	char		*endname;
 }				t_lem_info;
 
+typedef struct	s_current_map
+{
+	t_lem_map	*map;
+	t_list		*path;
+}				t_current_map;
+
 char			**read_all();
 int				parsing(t_lem_info *data, char **readed);
 int				get_ants_number(t_lem_info *data, char **readed);
@@ -44,6 +50,6 @@ t_lem_map		*getset_endmap(t_lem_map *param);
 void 			get_path(t_lem_map *map);
 void			print_map(t_lem_map *map);
 void 			ft_lstpushback(t_list *list, t_list *toadd);
-void			advance_and_clear(t_list **list);
+void			advance_and_clear(t_list **list, char clear_content);
 
 #endif

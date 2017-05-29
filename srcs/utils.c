@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 19:36:30 by user              #+#    #+#             */
-/*   Updated: 2017/05/28 21:38:06 by user             ###   ########.fr       */
+/*   Updated: 2017/05/29 12:24:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,22 @@ t_list	*remove_conn_save_next(t_list **conns, t_list *prev, t_list *result,
 	return (result);
 }
 
-void	advance_and_clear(t_list **list)
+void	advance_and_clear(t_list **list, char clear_content)
 {
-	t_list	*tmp;
-	t_list	*tofree;
+	t_list			*tmp;
+	t_list			*tofree;
+	t_current_map	*map;
 
 	tmp = *list;
 	tofree = *list;
 	tmp = tmp->next;
+	if (clear_content)
+	{
+		map = tofree->content;
+		while (map->path)
+			advance_and_clear(&map->path, 0);
+		free(tofree->content);
+	}
 	free(tofree);
 	*list = tmp;
 }
