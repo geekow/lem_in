@@ -6,14 +6,12 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:16:03 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/29 12:26:16 by user             ###   ########.fr       */
+/*   Updated: 2017/05/29 13:10:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include "limits.h"
-
-#include "ft_printf.h"
+#include <limits.h>
 
 t_list	*add_to_path(t_list *path, char *map_name)
 {
@@ -27,37 +25,32 @@ t_list	*add_to_path(t_list *path, char *map_name)
 	result->next = NULL;
 	if (!path)
 		return (result);
-	else
+	if (!(cpy = (t_list*)malloc(sizeof(t_list))))
+		return (NULL);
+	cpy->content = path->content;
+	tmp = cpy;
+	while (path->next != NULL)
 	{
-		if (!(cpy = (t_list*)malloc(sizeof(t_list))))
+		if (!(tmp->next = (t_list*)malloc(sizeof(t_list))))
 			return (NULL);
-		cpy->content = path->content;
-		tmp = cpy;
-		while (path->next != NULL)
-		{
-			if (!(tmp->next = (t_list*)malloc(sizeof(t_list))))
-				return (NULL);
-			path = path->next;
-			tmp->next->content = path->content;
-			tmp = tmp->next;
-		}
-		tmp->next = result;
-		return (cpy);
-	}
-}
-
-void	*print_path(t_list *path, char *last)
-{
-	t_list	*tmp;
-
-	tmp = path;
-	ft_printf("PATH:");
-	while (tmp)
-	{
-		ft_printf("%s->	", (char*)tmp->content);
+		path = path->next;
+		tmp->next->content = path->content;
 		tmp = tmp->next;
 	}
-	ft_printf("%s\n\n\n", last);
+	tmp->next = result;
+	return (cpy);
+}
+
+t_list	*get_set_shortest_way(t_list *list, char *reset)
+{
+	static t_list	*result = NULL;
+
+	if (reset)
+		result = NULL;
+	else if (list)
+		result = list;
+	else
+		return (result);
 	return (NULL);
 }
 
@@ -73,22 +66,19 @@ t_list	*calc_shortest(t_lem_map *map, t_list *path)
 	while (map->next && map->next[++i])
 	{
 		if (map->next[i] == getset_endmap(NULL))
-			return (print_path(path, map->name));
+			return (get_set_shortest_way(add_to_path(path, map->name), 0));
+		if (!(tmp = (t_list*)malloc(sizeof(t_list))))
+			return (NULL);
+		if (!(mapInfo = (t_current_map*)malloc(sizeof(t_current_map))))
+			return (NULL);
+		mapInfo->map = map->next[i];
+		mapInfo->path = add_to_path(path, map->name);
+		tmp->content = (void*)mapInfo;
+		tmp->next = NULL;
+		if (!result)
+			result = tmp;
 		else
-		{
-			if (!(tmp = (t_list*)malloc(sizeof(t_list))))
-				return (NULL);
-			if (!(mapInfo = (t_current_map*)malloc(sizeof(t_current_map))))
-				return (NULL);
-			mapInfo->map = map->next[i];
-			mapInfo->path = add_to_path(path, map->name);
-			tmp->content = (void*)mapInfo;
-			tmp->next = NULL;
-			if (!result)
-				result = tmp;
-			else
-				ft_lstpushback(result, tmp);
-		}
+			ft_lstpushback(result, tmp);
 	}
 	return (result);
 }
@@ -98,6 +88,7 @@ void 	get_path(t_lem_map *start)
 	t_list			*current;
 	t_list			*next;
 	t_current_map	*map;
+	t_list			*result;
 
 	next = NULL;
 	current = calc_shortest(start, NULL);
@@ -106,10 +97,19 @@ void 	get_path(t_lem_map *start)
 		while (current)
 		{
 			map = current->content;
+			result = calc_shortest(map->map, map->path);
+			if (!result && get_set_shortest_way(NULL, 0))
+			{
+				while (current)
+					advance_and_clear(&current, 1);
+				while (next)
+					advance_and_clear(&next, 1);
+				return ;
+			}
 			if (!next)
-				next = calc_shortest(map->map, map->path);
+				next = result;
 			else
-				ft_lstpushback(next, calc_shortest(map->map, map->path));
+				ft_lstpushback(next, result);
 			advance_and_clear(&current, 1);
 		}
 		current = next;

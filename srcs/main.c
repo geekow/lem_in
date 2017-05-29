@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/28 21:43:52 by user             ###   ########.fr       */
+/*   Updated: 2017/05/29 13:20:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,24 @@ int		clear_all(t_lem_info *info)
 	return (0);
 }
 
+void	*print_path(t_list *path)
+{
+	t_list	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = path;
+	ft_printf("\n\n\nPATH:");
+	while (tmp)
+	{
+		i++;
+		ft_printf("%s->	", (char*)tmp->content);
+		tmp = tmp->next;
+	}
+	ft_printf("\nScore:%d\n\n\n", i);
+	return (NULL);
+}
+
 int		main(void)
 {
 	t_lem_info	data;
@@ -58,6 +76,7 @@ int		main(void)
 	if (!data.map || structure_data(data.map) == -1)
 		return (error());
 	get_path(getset_startmap(NULL));
+	print_path(get_set_shortest_way(NULL, 0));
 	// print_map(getset_startmap(NULL));
 	// return (clear_all(&data));
 	return (0);
