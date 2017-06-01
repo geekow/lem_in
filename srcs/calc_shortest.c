@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:16:03 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/29 13:10:58 by user             ###   ########.fr       */
+/*   Updated: 2017/06/01 23:01:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,19 @@ t_list	*calc_shortest(t_lem_map *map, t_list *path)
 	while (map->next && map->next[++i])
 	{
 		if (map->next[i] == getset_endmap(NULL))
+		{
+			while (result)
+				advance_and_clear(&result, 1);
 			return (get_set_shortest_way(add_to_path(path, map->name), 0));
-		if (!(tmp = (t_list*)malloc(sizeof(t_list))))
-			return (NULL);
-		if (!(mapInfo = (t_current_map*)malloc(sizeof(t_current_map))))
+		}
+		if (!(tmp = (t_list*)malloc(sizeof(t_list))) ||
+			!(mapInfo = (t_current_map*)malloc(sizeof(t_current_map))))
 			return (NULL);
 		mapInfo->map = map->next[i];
 		mapInfo->path = add_to_path(path, map->name);
 		tmp->content = (void*)mapInfo;
 		tmp->next = NULL;
-		if (!result)
-			result = tmp;
-		else
-			ft_lstpushback(result, tmp);
+		result = !result ? tmp : ft_lstpushback(result, tmp);
 	}
 	return (result);
 }
@@ -106,10 +106,7 @@ void 	get_path(t_lem_map *start)
 					advance_and_clear(&next, 1);
 				return ;
 			}
-			if (!next)
-				next = result;
-			else
-				ft_lstpushback(next, result);
+			next = !next ? result : ft_lstpushback(next, result);
 			advance_and_clear(&current, 1);
 		}
 		current = next;

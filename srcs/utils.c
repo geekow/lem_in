@@ -6,14 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 19:36:30 by user              #+#    #+#             */
-/*   Updated: 2017/05/29 12:24:33 by user             ###   ########.fr       */
+/*   Updated: 2017/06/01 22:44:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "lem_in.h"
 
-void ft_lstpushback(t_list *list, t_list *toadd)
+t_list	*ft_lstpushback(t_list *list, t_list *toadd)
 {
 	t_list	*tmp;
 
@@ -21,6 +21,7 @@ void ft_lstpushback(t_list *list, t_list *toadd)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = toadd;
+	return (list);
 }
 
 t_list	*remove_conn_save_next(t_list **conns, t_list *prev, t_list *result,

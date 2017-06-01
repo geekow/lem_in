@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:48:52 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/29 12:40:58 by user             ###   ########.fr       */
+/*   Updated: 2017/06/01 22:43:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ t_list			*getset_map(t_list *param);
 t_list			*remove_conn_save_next(t_list **conns, t_list *prev,
 					t_list *result, t_lem_map *toadd);
 t_list			*get_set_shortest_way(t_list *list, char *reset);
+t_list 			*ft_lstpushback(t_list *list, t_list *toadd);
 t_lem_map		*getset_startmap(t_lem_map *param);
 t_lem_map		*getset_endmap(t_lem_map *param);
 void 			get_path(t_lem_map *map);
 void			print_map(t_lem_map *map);
-void 			ft_lstpushback(t_list *list, t_list *toadd);
 void			advance_and_clear(t_list **list, char clear_content);
 
 #endif
