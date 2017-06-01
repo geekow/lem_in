@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/29 13:20:44 by user             ###   ########.fr       */
+/*   Updated: 2017/06/01 23:07:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		main(void)
 	data.map = getset_startmap(NULL);
 	if (!data.map || structure_data(data.map) == -1)
 		return (error());
-	get_path(getset_startmap(NULL));
+	get_path(getset_startmap(NULL), NULL);
 	print_path(get_set_shortest_way(NULL, 0));
 	// print_map(getset_startmap(NULL));
 	// return (clear_all(&data));

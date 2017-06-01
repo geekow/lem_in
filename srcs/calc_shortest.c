@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:16:03 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/01 23:01:59 by user             ###   ########.fr       */
+/*   Updated: 2017/06/01 23:08:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,12 @@ t_list	*calc_shortest(t_lem_map *map, t_list *path)
 	return (result);
 }
 
-void 	get_path(t_lem_map *start)
+void 	get_path(t_lem_map *start, t_list *next)
 {
 	t_list			*current;
-	t_list			*next;
 	t_current_map	*map;
 	t_list			*result;
 
-	next = NULL;
 	current = calc_shortest(start, NULL);
 	while (current)
 	{
