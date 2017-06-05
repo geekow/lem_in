@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:16:03 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/01 23:08:23 by user             ###   ########.fr       */
+/*   Updated: 2017/06/05 03:02:47 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_list	*calc_shortest(t_lem_map *map, t_list *path)
 {
 	t_list			*result;
 	t_list			*tmp;
-	t_current_map	*mapInfo;
+	t_current_map	*map_info;
 	int				i;
 
 	i = -1;
@@ -72,18 +72,18 @@ t_list	*calc_shortest(t_lem_map *map, t_list *path)
 			return (get_set_shortest_way(add_to_path(path, map->name), 0));
 		}
 		if (!(tmp = (t_list*)malloc(sizeof(t_list))) ||
-			!(mapInfo = (t_current_map*)malloc(sizeof(t_current_map))))
+			!(map_info = (t_current_map*)malloc(sizeof(t_current_map))))
 			return (NULL);
-		mapInfo->map = map->next[i];
-		mapInfo->path = add_to_path(path, map->name);
-		tmp->content = (void*)mapInfo;
+		map_info->map = map->next[i];
+		map_info->path = add_to_path(path, map->name);
+		tmp->content = (void*)map_info;
 		tmp->next = NULL;
 		result = !result ? tmp : ft_lstpushback(result, tmp);
 	}
 	return (result);
 }
 
-void 	get_path(t_lem_map *start, t_list *next)
+void	get_path(t_lem_map *start, t_list *next)
 {
 	t_list			*current;
 	t_current_map	*map;

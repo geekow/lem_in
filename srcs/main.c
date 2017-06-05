@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/01 23:07:49 by user             ###   ########.fr       */
+/*   Updated: 2017/06/05 04:06:02 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,6 @@ int		error(void)
 {
 	ft_printf("ERROR");
 	return (-1);
-}
-
-void	clear_map(t_lem_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (map->next[i] != NULL)
-	{
-		clear_map(map->next[i++]);
-	}
-	free(map->name);
-	free(map->next);
-	free(map);
-}
-
-int		clear_all(t_lem_info *info)
-{
-	t_list		*list;
-	t_list		*tmp;
-
-	list = getset_map(NULL);
-	while (list)
-	{
-		tmp = list;
-		list = list->next;
-		free(tmp);
-	}
-	clear_map(info->map);
-	return (0);
 }
 
 void	*print_path(t_list *path)
@@ -77,7 +47,18 @@ int		main(void)
 		return (error());
 	get_path(getset_startmap(NULL), NULL);
 	print_path(get_set_shortest_way(NULL, 0));
-	// print_map(getset_startmap(NULL));
-	// return (clear_all(&data));
-	return (0);
+	return (clear_all());
 }
+
+
+/**
+
+	Solution
+		if (rest(ants, solution))
+			solution = solution + 1;
+
+	Tans que score(Solution + 1) < score(Solution)
+		solution = solution + 1;
+	RESULT: SOLUTION
+
+**/

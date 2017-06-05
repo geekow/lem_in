@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 17:55:13 by user              #+#    #+#             */
-/*   Updated: 2017/05/28 19:43:52 by user             ###   ########.fr       */
+/*   Updated: 2017/06/05 03:31:53 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_list	*get_next_maps(t_lem_map *map)
 	return (result);
 }
 
-void print_map(t_lem_map *map)
+void	print_map(t_lem_map *map)
 {
 	t_list		*current;
 	t_list		*next;
