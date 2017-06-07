@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:16:03 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/05 03:02:47 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/06/07 04:22:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_list	*add_to_path(t_list *path, char *map_name)
 	return (cpy);
 }
 
-t_list	*get_set_shortest_way(t_list *list, char *reset)
+t_list	*get_set_shortest_way(t_list *list, char reset)
 {
 	static t_list	*result = NULL;
 

@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:58:43 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/29 12:19:57 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 04:27:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int			structure_data(t_lem_map *map)
 		while (current)
 		{
 			tmp = current->content;
-			if (!tmp->next)
+			if (!tmp->next && tmp != getset_endmap(NULL))
 			{
 				alloc_next_ptrs(tmp);
 				if (!next)
