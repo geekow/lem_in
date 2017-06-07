@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 01:29:19 by user              #+#    #+#             */
-/*   Updated: 2017/06/07 19:06:58 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 20:21:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	calc_score(int ants, t_path *result)
 	shortest = result->deep;
 	result->ants = average;
 	tmp = result->next;
-	removed = 0;
+	removed = ants % path_nbrs(result);
 	while (tmp)
 	{
 		removed += tmp->deep - shortest;
@@ -116,10 +116,10 @@ t_path	*solve(t_lem_info *data, int condition)
 	int		score;
 
 	get_path(getset_startmap(NULL), NULL);
-	result = cpy_and_add(NULL, get_set_shortest_way(NULL, 0));
-	remove_from_data(data->map, result->path);
+	if ((result = cpy_and_add(NULL, get_set_shortest_way(NULL, 0))))
+		remove_from_data(data->map, result->path);
 	get_set_shortest_way(NULL, 1);
-	while (condition)
+	while (condition && result)
 	{
 		score = calc_score(data->ants, result);
 		get_path(getset_startmap(NULL), NULL);

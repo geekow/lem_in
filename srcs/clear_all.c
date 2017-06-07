@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 02:34:06 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 04:51:07 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 20:15:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@ void	clear_connections(void)
 
 void	clear_map_struct(t_lem_map *map)
 {
-	free(map->name);
-	free(map->next);
-	free(map);
+	if (map)
+	{
+		free(map->name);
+		free(map->next);
+		free(map);
+	}
 }
 
 void	clear_maps(void)
