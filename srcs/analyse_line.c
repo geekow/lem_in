@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:17:22 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/23 22:35:17 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/06/07 19:51:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ char	*cpyandtronck(char *line, int i)
 	return (result);
 }
 
+int		catch_error(char *name, char *prop)
+{
+	if (name)
+		free(name);
+	if (prop)
+		free(prop);
+	return (-1);
+}
+
 int		analyse_line(char *prop, char *line)
 {
 	char		*name;
@@ -35,12 +44,12 @@ int		analyse_line(char *prop, char *line)
 	if (line[i] == ' ' && step == 0)
 	{
 		if (-1 == reg_piece(name, line + i + 1, prop))
-			return (-1);
+			return (catch_error(name, prop));
 	}
 	else if (line[i] == '-' && (step = 1))
 	{
 		if (-1 == reg_connection(name, line + i + 1))
-			return (-1);
+			return (catch_error(name, prop));
 	}
 	else
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:20:11 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 18:10:01 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 19:54:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ t_lem_map	*get_room(char *name, char *str)
 	t_lem_map	*result;
 	int			i;
 
+	if (name[0] == 'L')
+	return (NULL);
 	result = (t_lem_map*)malloc(sizeof(t_lem_map));
 	if (!result)
 		return (NULL);

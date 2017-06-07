@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:24:40 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/28 20:05:30 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 19:46:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ t_list	*save_connection(char *name, char *line)
 	t_list				*result;
 	t_lem_connection	*cont;
 
+	if (name[0] == 'L' || line[0] == 'L' || line[0] == '#' ||
+		ft_strchr(line, ' ') || ft_strchr(line, '-'))
+		return (NULL);
 	result = (t_list*)malloc(sizeof(t_list));
 	if (result == NULL)
 		return (NULL);
