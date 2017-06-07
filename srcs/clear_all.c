@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 02:34:06 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 03:15:03 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 04:51:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	clear_path(t_list *tmp)
 {
 	t_list	*cache;
 
-	tmp = get_set_shortest_way(NULL, 0);
 	while (tmp)
 	{
 		cache = tmp->next;
