@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 12:11:25 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/29 13:29:28 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 19:08:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_ants_number(t_lem_info *data, char **readed)
 	char	*tmp;
 
 	i = 0;
-	while (readed[i] != NULL)
+	while (readed && readed[i] != NULL)
 	{
 		if (readed[i++][0] != '#')
 		{

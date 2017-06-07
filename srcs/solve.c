@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 01:29:19 by user              #+#    #+#             */
-/*   Updated: 2017/06/07 18:11:51 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 19:06:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ t_path	*cpy_and_add(t_path *path, t_list *toadd)
 
 	if (!toadd)
 		return (path);
+	if (ft_lstlen(toadd) == 1 && path)
+	{
+		clear_path(toadd);
+		return (path);
+	}
 	if (!(result = (t_path*)malloc(sizeof(t_path))))
 		return (NULL);
 	cpy = result;
@@ -104,24 +109,23 @@ void	remove_from_data(t_lem_map *map, t_list *path)
 	}
 }
 
-t_path	*solve(t_lem_info *data)
+t_path	*solve(t_lem_info *data, int condition)
 {
 	t_path	*result;
 	t_path	*tmp;
 	int		score;
-	int		condition;
 
 	get_path(getset_startmap(NULL), NULL);
 	result = cpy_and_add(NULL, get_set_shortest_way(NULL, 0));
 	remove_from_data(data->map, result->path);
 	get_set_shortest_way(NULL, 1);
-	condition = 1;
 	while (condition)
 	{
 		score = calc_score(data->ants, result);
 		get_path(getset_startmap(NULL), NULL);
 		tmp = cpy_and_add(result, get_set_shortest_way(NULL, 0));
-		remove_from_data(data->map, get_set_shortest_way(NULL, 0));
+		if (tmp != result)
+			remove_from_data(data->map, get_set_shortest_way(NULL, 0));
 		get_set_shortest_way(NULL, 1);
 		if (score <= calc_score(data->ants, tmp))
 			condition = 0;
