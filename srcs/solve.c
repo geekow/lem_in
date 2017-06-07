@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 01:29:19 by user              #+#    #+#             */
-/*   Updated: 2017/06/07 04:31:47 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 18:11:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	remove_from_data(t_lem_map *map, t_list *path)
 		remove_from_data(map->next[todell], path->next);
 	if (todell != -1)
 	{
+		map->next[todell]->occuped = 1;
 		map->next[todell] = map->next[i - 1];
 		map->next[i - 1] = NULL;
 	}

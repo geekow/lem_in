@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:16:03 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 04:22:36 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 18:10:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_list	*calc_shortest(t_lem_map *map, t_list *path)
 
 	i = -1;
 	result = NULL;
-	while (map->next && map->next[++i])
+	while (!map->occuped && map->next && map->next[++i])
 	{
 		if (map->next[i] == getset_endmap(NULL))
 		{
