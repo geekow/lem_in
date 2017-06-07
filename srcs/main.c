@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 20:23:02 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 20:32:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		main(void)
 
 	parsing(&data, read_all());
 	data.map = getset_startmap(NULL);
-	if (!data.map || structure_data(data.map) == -1)
+	if (!data.map || !getset_endmap(NULL) || structure_data(data.map) == -1)
 		return (error());
 	result = solve(&data, 1);
 	print_result(result);
