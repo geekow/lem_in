@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:48:52 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 19:06:08 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 21:08:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void			get_path(t_lem_map *map, t_list *next);
 void			print_map(t_lem_map *map);
 void			ft_freepath(t_path *path);
 void			advance_and_clear(t_list **list, char clear_content);
-void			clear_path(t_list *tmp);
+void			clear_lst(t_list *tmp);
+void			clear_path(t_path *path);
+void			clear_overpath(t_path *path, t_path *cmp, int *tricky);
 
 #endif

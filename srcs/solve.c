@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 01:29:19 by user              #+#    #+#             */
-/*   Updated: 2017/06/07 20:21:35 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 21:08:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_path	*cpy_and_add(t_path *path, t_list *toadd)
 		return (path);
 	if (ft_lstlen(toadd) == 1 && path)
 	{
-		clear_path(toadd);
+		clear_lst(toadd);
 		return (path);
 	}
 	if (!(result = (t_path*)malloc(sizeof(t_path))))
@@ -128,7 +128,7 @@ t_path	*solve(t_lem_info *data, int condition)
 			remove_from_data(data->map, get_set_shortest_way(NULL, 0));
 		get_set_shortest_way(NULL, 1);
 		if (score <= calc_score(data->ants, tmp))
-			condition = 0;
+			clear_overpath(tmp, result, &condition);
 		else
 		{
 			ft_freepath(result);

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 19:36:30 by user              #+#    #+#             */
-/*   Updated: 2017/06/07 03:06:19 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 20:56:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,6 @@ int		ft_lstlen(t_list *lst)
 		lst = lst->next;
 	}
 	return (i);
-}
-
-void	ft_freepath(t_path *path)
-{
-	t_path	*tmp;
-
-	while (path)
-	{
-		tmp = path->next;
-		free(path);
-		path = tmp;
-	}
 }
 
 t_list	*ft_lstpushback(t_list *list, t_list *toadd)

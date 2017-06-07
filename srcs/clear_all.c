@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 02:34:06 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 20:15:21 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 20:57:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,32 +59,12 @@ void	clear_maps(void)
 	}
 }
 
-void	clear_path(t_list *tmp)
-{
-	t_list	*cache;
-
-	while (tmp)
-	{
-		cache = tmp->next;
-		free(tmp);
-		tmp = cache;
-	}
-}
-
 int		clear_all(t_path *path)
 {
-	t_path	*tmp;
-
-	tmp = path;
-	while (tmp)
-	{
-		clear_path(tmp->path);
-		tmp = tmp->next;
-	}
+	clear_path(path);
 	clear_connections();
 	clear_maps();
 	clear_map_struct(getset_startmap(NULL));
 	clear_map_struct(getset_endmap(NULL));
-	ft_freepath(path);
 	return (0);
 }
