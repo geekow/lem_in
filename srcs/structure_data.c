@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:58:43 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 23:12:30 by user             ###   ########.fr       */
+/*   Updated: 2017/06/08 01:25:27 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,12 @@ t_lem_map	*get_map_add_with_name(char *name)
 	return (NULL);
 }
 
-t_list		*get_next_ptrs(t_lem_map *map, t_list *list)
+t_list		*get_next_ptrs(t_lem_map *map, t_list *list, int i)
 {
-	int					i;
 	t_list				*previous;
 	t_lem_connection	*connec;
 	t_list				*result;
 
-	i = 0;
 	previous = NULL;
 	result = NULL;
 	while (list)
@@ -101,7 +99,7 @@ t_list		*get_next_ptrs(t_lem_map *map, t_list *list)
 	return (result);
 }
 
-int			structure_data(t_lem_map *map)
+void		structure_data(t_lem_map *map)
 {
 	t_list		*current;
 	t_list		*next;
@@ -109,7 +107,7 @@ int			structure_data(t_lem_map *map)
 
 	next = NULL;
 	alloc_next_ptrs(map);
-	current = get_next_ptrs(map, CONNECTIONS);
+	current = get_next_ptrs(map, CONNECTIONS, 0);
 	while (current)
 	{
 		while (current)
@@ -119,14 +117,13 @@ int			structure_data(t_lem_map *map)
 			{
 				alloc_next_ptrs(tmp);
 				if (!next)
-					next = get_next_ptrs(tmp, CONNECTIONS);
+					next = get_next_ptrs(tmp, CONNECTIONS, 0);
 				else
-					ft_lstpushback(next, get_next_ptrs(tmp, CONNECTIONS));
+					ft_lstpushback(next, get_next_ptrs(tmp, CONNECTIONS, 0));
 			}
 			advance_and_clear(&current, 0);
 		}
 		current = next;
 		next = NULL;
 	}
-	return (0);
 }

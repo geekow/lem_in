@@ -6,13 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 01:29:19 by user              #+#    #+#             */
-/*   Updated: 2017/06/07 21:08:53 by user             ###   ########.fr       */
+/*   Updated: 2017/06/08 01:19:52 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	path_nbrs(t_path *path)
+int		path_nbrs(t_path *path)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int	path_nbrs(t_path *path)
 	return (i);
 }
 
-int	calc_score(int ants, t_path *result)
+int		calc_score(int ants, t_path *result)
 {
 	t_path	*tmp;
 	int		average;
@@ -59,18 +59,16 @@ t_path	*cpy_and_add(t_path *path, t_list *toadd)
 	t_path	*result;
 	t_path	*cpy;
 
-	if (!toadd)
-		return (path);
-	if (ft_lstlen(toadd) == 1 && path)
-	{
+	if (!toadd || (ft_lstlen(toadd) == 1 && path))
 		clear_lst(toadd);
+	if (!toadd || (ft_lstlen(toadd) == 1 && path))
 		return (path);
-	}
 	if (!(result = (t_path*)malloc(sizeof(t_path))))
 		return (NULL);
 	cpy = result;
 	while (path)
 	{
+		cpy->current = path->current;
 		cpy->deep = path->deep;
 		cpy->path = path->path;
 		if (!(cpy->next = (t_path*)malloc(sizeof(t_path))))
@@ -78,6 +76,7 @@ t_path	*cpy_and_add(t_path *path, t_list *toadd)
 		path = path->next;
 		cpy = cpy->next;
 	}
+	cpy->current = NULL;
 	cpy->deep = ft_lstlen(toadd);
 	cpy->path = toadd;
 	cpy->next = NULL;

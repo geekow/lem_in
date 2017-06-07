@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:48:52 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 22:05:23 by user             ###   ########.fr       */
+/*   Updated: 2017/06/08 01:25:49 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "lem_in_map.h"
 # include "libft.h"
 # include "paths.h"
+# include "ants.h"
 
 # define CONNECTIONS getset_connection(NULL, 0)
 
@@ -40,7 +41,6 @@ int				analyse_line(char *prop, char *line);
 int				reg_piece(char *name, char *line, char *prop);
 int				reg_connection(char *name, char *line);
 int				store_piece_list(t_lem_map *store_piece_list);
-int				structure_data(t_lem_map *map);
 int				clear_all(t_path *path);
 int				score_paths(int	ants, t_path *result);
 int				ft_lstlen(t_list *lst);
@@ -54,8 +54,8 @@ t_list			*ft_lstpushback(t_list *list, t_list *toadd);
 t_lem_map		*getset_startmap(t_lem_map *param);
 t_lem_map		*getset_endmap(t_lem_map *param);
 t_path			*solve(t_lem_info *data, int condition);
+void			structure_data(t_lem_map *map);
 void			get_path(t_lem_map *map, t_list *next);
-void			print_map(t_lem_map *map);
 void			ft_freepath(t_path *path);
 void			advance_and_clear(t_list **list, char clear_content);
 void			clear_lst(t_list *tmp);
