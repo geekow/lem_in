@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 10:44:57 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/05/29 13:22:32 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 20:26:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ int		parsing(t_lem_info *data, char **readed)
 	int	i;
 
 	if ((i = get_ants_number(data, readed)) == -1)
+	{
+		free_readed(readed);
 		return (-1);
+	}
 	while (readed[i])
 		if (treat_line(readed[i++]) == -1)
 			break ;
