@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 10:44:57 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/07 20:26:51 by user             ###   ########.fr       */
+/*   Updated: 2017/06/07 21:16:47 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		treat_line(char *buff)
 {
 	if (ft_strlen(buff) >= 2 && ft_strncmp(buff, "##", 2) == 0)
 	{
+		free(regprop(NULL));
 		regprop(buff + 2);
 		return (ft_printf("%s\n", buff));
 	}
