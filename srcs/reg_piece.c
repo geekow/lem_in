@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:20:11 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/08 01:21:00 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/06/08 19:03:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ t_lem_map	*get_room(char *name, char *str)
 
 	if (name[0] == 'L')
 		return (NULL);
-	result = (t_lem_map*)malloc(sizeof(t_lem_map));
+	if (!(result = (t_lem_map*)malloc(sizeof(t_lem_map))))
+		return (NULL);
 	if (!result)
 		return (NULL);
 	tmp = ft_split_whitespaces(str);

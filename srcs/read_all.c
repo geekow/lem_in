@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 10:21:25 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/05 02:30:44 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/06/08 19:01:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	**append(char **table, char *toadd)
 	i = 0;
 	while (table && table[i] != NULL)
 		i++;
-	result = (char**)malloc(sizeof(char*) * (i + 3));
+	if (!(result = (char**)malloc(sizeof(char*) * (i + 3))))
+		return (NULL);
 	i = 0;
 	while (table && table[i] != NULL)
 	{
