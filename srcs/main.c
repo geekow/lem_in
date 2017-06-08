@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:33:54 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/08 01:26:16 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/06/08 01:45:09 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int		main(void)
 	result = solve(&data, 1);
 	if (!result)
 		return (error());
-	print_result(result);
+	print_result(result, data.ants);
 	return (clear_all(result));
 }

@@ -3,44 +3,115 @@
 /*                                                        :::      ::::::::   */
 /*   print_result.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/07 22:05:40 by user              #+#    #+#             */
-/*   Updated: 2017/06/07 22:51:20 by user             ###   ########.fr       */
+/*   Created: 2017/06/07 22:05:40 by jjacobi           #+#    #+#             */
+/*   Updated: 2017/06/08 02:41:23 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include "ft_printf.h"
 
-void	print_result(t_path *path)
+void	advance(t_ants *ants)
 {
-	static int		nbr = 1;
-	int				i;
-	int				y;
-	t_list			*way;
-	t_path			*tmp;
+	while (ants)
+	{
+		ants->map = ants->map->next;
+		ants = ants->next;
+	}
+}
 
-	tmp = path;
-	i = 0;
+t_ants	*create_ants(int nb)
+{
+	t_ants	*result;
+	t_ants	*tmp;
+	int		i;
+
+	i = 1;
+	if (!(result = (t_ants*)malloc(sizeof(t_ants))))
+		return (NULL);
+	result->id = i++;
+	result->map = NULL;
+	result->next = NULL;
+	tmp = result;
+	while (i <= nb)
+	{
+		if (!(tmp->next = (t_ants*)malloc(sizeof(t_ants))))
+			return (NULL);
+		tmp->next->id = i++;
+		tmp->next->map = NULL;
+		tmp->next->next = NULL;
+		tmp = tmp->next;
+	}
+	return (result);
+}
+
+void	add_ant(t_ants **all_ants, t_path *path)
+{
+	t_ants	*ant;
+
+	ant = *all_ants;
+	if (path->ants == 0 || !ant)
+		return ;
+	path->ants--;
+	*all_ants = ant->next;
+	ant->next = path->current;
+	path->current = ant;
+	ant->map = path->path->next;
+}
+
+int		remove_ended_ants(t_path *path)
+{
+	t_ants	*tmp;
+	t_ants	*cache;
+
+	if (!path || !path->current)
+		return (0);
+	if (path->current->map == NULL)
+	{
+		free(path->current);
+		path->current = NULL;
+		return (1);
+	}
+	cache = path->current;
+	tmp = path->current->next;
 	while (tmp)
 	{
-		if (nbr > path->ants)
-			return ;
-		way = tmp->path;
-		y = 0;
-		while (y < nbr && way->next)
+		if (tmp->map == NULL)
 		{
-			way = way->next;
-			y++;
+			cache->next = tmp->next;
+			free(tmp);
+			return (1);
 		}
-		ft_printf("L%d-%s", nbr + i, way->content);
-		i++;
+		cache = tmp;
 		tmp = tmp->next;
-		if (tmp)
-			ft_printf(" ");
 	}
-	ft_printf("\n");
-	nbr++;
-	print_result(path);
+	return (0);
+}
+
+void	print_result(t_path *path, int max)
+{
+	t_ants		*ants;
+	t_path		*tmp;
+	int			end;
+
+	ants = create_ants(max);
+	tmp = path;
+	end = 0;
+	while (tmp)
+	{
+		advance(tmp->current);
+		add_ant(&ants, tmp);
+		print_ants(tmp->current, tmp->next);
+		end += remove_ended_ants(tmp);
+		tmp = tmp->next;
+		if (!tmp)
+		{
+			tmp = path;
+			ft_printf("\n");
+			if (end == max)
+				return ;
+		}
+	}
 }

@@ -6,7 +6,7 @@
 #    By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 13:04:48 by jjacobi           #+#    #+#              #
-#    Updated: 2017/06/08 01:00:57 by jjacobi          ###   ########.fr        #
+#    Updated: 2017/06/08 02:40:07 by jjacobi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS		= -Wall -Wextra -Werror -g
 SRC_FILES	= main.c get_ants_number.c parsing.c read_all.c analyse_line.c \
 				reg_piece.c reg_connection.c store_piece_list.c \
 				structure_data.c calc_shortest.c utils.c clear_all.c solve.c \
-				clear_path.c print_result.c
+				clear_path.c print_result.c print_ants.c
 OBJ			= $(SRC_FILES:.c=.o)
 
 H_DIRS		= -I ./includes -I ./libft/includes

@@ -6,7 +6,7 @@
 /*   By: jjacobi <jjacobi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 11:48:52 by jjacobi           #+#    #+#             */
-/*   Updated: 2017/06/08 01:25:49 by jjacobi          ###   ########.fr       */
+/*   Updated: 2017/06/08 02:39:33 by jjacobi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void			advance_and_clear(t_list **list, char clear_content);
 void			clear_lst(t_list *tmp);
 void			clear_path(t_path *path);
 void			clear_overpath(t_path *path, t_path *cmp, int *tricky);
-void			print_result(t_path *path);
+void			print_result(t_path *path, int max);
+void			print_ants(t_ants *ants, t_path *test);
 
 #endif
